@@ -1,15 +1,89 @@
-/*************************************************** 
-    UTILITIES
-****************************************************/
+/********************* 
+    RESET
+**********************/
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
 
 /********************* 
-    BACKGROUND COLORS
+    ROOT
 **********************/
+:root {
+
+}
 
 /********************* 
-    TEXT
+   GENERAL
 **********************/
+.flex{
+    display: flex;
+}
+.flex-grow{
+    flex-grow: 1;
+}
 
-/********************* 
-    CONTAINERS
-**********************/
+body{
+    height: 100vh;
+    background: linear-gradient(180deg, #009688   15%, #D9DBD5 15%);
+}
+
+.containerWebApp{
+    margin: auto ;
+    width: 80%;
+    height: 90%;
+    background-color: lightgreen;
+    display: flex
+}
+
+.left{
+    width: 30%;
+    background-color: lightsalmon;
+}
+
+.right{
+    background-color: lightcoral;
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+}
+
+img{
+    max-width: 100%;
+    
+}
+
+.user-profile{
+    background-color: yellow;
+    width: 100%;
+    height: 8vh;
+}
+
+.notifications{
+    background-color: red;
+    height: 8vh;
+}
+
+.search-bar{
+    background-color: green;
+    height: 5vh;
+}
+
+.contact-list{
+    height: calc(100% - 21vh );
+    background-color: yellow;
+}
+.chat-profile{
+    background-color: red;
+    height: 8vh;
+}
+.writing-message{
+    background-color: lightgray;
+    height: 8vh;
+}
+.chat{
+    height: calc(100% - 16 vh );
+    background-color: blue;
+    flex-grow: 1 ;
+}
