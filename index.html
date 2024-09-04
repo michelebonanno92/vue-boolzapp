@@ -29,9 +29,15 @@
                         </span>
                     </div>
                     <div class="icons">
-                      <i class="fa-solid fa-circle-notch "></i>
-                      <i class="fa-solid fa-message"></i>
-                      <i class="fa-solid fa-ellipsis-vertical"></i>
+                        <button class="user-stories">
+                            <i class="fa-solid fa-circle-notch "></i>
+                        </button>
+                        <button class="user-stories">
+                            <i class="fa-solid fa-message"></i>
+                        </button>
+                      <button>
+                        <i class="fa-solid fa-ellipsis-vertical"></i>
+                      </button>
                     </div>
                 </div>
                 <!-- receiving notifications -->
@@ -185,17 +191,73 @@
                         </div>
                     </div>
                 </div>
-                
+
             </aside>
+
             <section class="right">
-                <div class="chat-profile">
-                    profilo chat-profile
+                <!-- user chat active-->
+                <div class="chat-profile ">
+                    <div class="card-user active-chat ">
+                        <div class="img-container">
+                            <img src="img/avatar_1.jpg" alt="Michele">
+                        </div>
+                        <div class="name-container">
+                            <div class="mx-2 fw-bold">
+                                Michele
+                            </div>
+                            <div class="text-grey">
+                                Ultimo accesso oggi alle 16:15
+                            </div>
+                        </div>
+
+                        <div class="icons">
+                            <button >
+                                <i class="fa-solid fa-magnifying-glass"></i>
+                            </button>
+                            <button >
+                                <i class="fa-solid fa-paperclip"></i>
+                            </button>
+                          <button>
+                            <i class="fa-solid fa-ellipsis-vertical"></i>
+                          </button>
+                        </div>
+                   
+                    </div>
+
                 </div>
+                <!-- chat active -->
                 <div class="chat">
-                    chat
+                    <div class="flex-end">
+                        <button class="sent">
+                            <div class="flex-start">Hai portato a spasso il cane?</div>
+                            <div class="flex-end font-small">15:30</div>
+                        </button>
+                    </div>
+                    <div class="flex-end">
+                        <button class="sent">
+                            <div class="flex-start">Hai portato a spasso il cane?</div>
+                            <div class="flex-end font-small">15:30</div>
+                        </button>
+                    </div>
+                    <div >
+                        <button class="received">
+                            <div class="flex-start">Hai portato a spasso il cane?</div>
+                            <div class="flex-end font-small">15:30</div>
+                        </button>
+                    </div>
                 </div>
                 <div class="writing-message">
-                    writing message
+                    
+                    <button>
+                        <i class="fa-regular fa-face-smile"></i>
+                    </button>
+                    
+                    <input type="text" placeholder="scrivi un messaggio">
+                    
+                    <button>
+                        <i class="fa-solid fa-microphone"></i>
+                    </button>
+             
                 </div>
 
             </section>
