@@ -59,128 +59,14 @@
                 </div>
                 <!-- contact-list -->
                 <div class="contact-list">
-                    <div class="card-user  active-chat">
+                    <div  v-for="(contact, index) in contacts"
+                    class="card-user active-chat">
                         <div class="img-container">
-                            <img src="img/avatar_1.jpg" alt="Michele">
+                            <img :src="contact.avatar" alt="Michele">
                         </div>
                         <div class="name-container">
-                            <div class="mx-2 fw-bold">
-                                Michele
-                            </div>
-                            <div class="text-grey">
-                                Ultimo messaggio inviato 
-                            </div>
-                        </div>
-                        <div class="time-container text-grey">
-                            12:00
-                        </div>
-                    </div>
-
-                    <div  class="card-user">
-                        <div class="img-container">
-                            <img src="img/avatar_2.jpg" alt="Michele">
-                        </div>
-                        <div class="name-container">
-                            <div class="mx-2 fw-bold">
-                               Fabio
-                            </div>
-                            <div class="text-grey">
-                                Ultimo messaggio inviato 
-                            </div>
-                        </div>
-                        <div class="time-container text-grey">
-                            12:00
-                        </div>
-                    </div>
-
-                    <div  class="card-user">
-                        <div class="img-container">
-                            <img src="img/avatar_3.jpg" alt="Michele">
-                        </div>
-                        <div class="name-container">
-                            <div class="mx-2 fw-bold">
-                               Samuele
-                            </div>
-                            <div class="text-grey">
-                                Ultimo messaggio inviato 
-                            </div>
-                        </div>
-                        <div class="time-container text-grey">
-                            12:00
-                        </div>
-                    </div>
-
-                    <div  class="card-user">
-                        <div class="img-container">
-                            <img src="img/avatar_3.jpg" alt="Michele">
-                        </div>
-                        <div class="name-container">
-                            <div class="mx-2 fw-bold">
-                               Samuele
-                            </div>
-                            <div class="text-grey">
-                                Ultimo messaggio inviato 
-                            </div>
-                        </div>
-                        <div class="time-container text-grey">
-                            12:00
-                        </div>
-                    </div>
-                    <div  class="card-user">
-                        <div class="img-container">
-                            <img src="img/avatar_3.jpg" alt="Michele">
-                        </div>
-                        <div class="name-container">
-                            <div class="mx-2 fw-bold">
-                               Samuele
-                            </div>
-                            <div class="text-grey">
-                                Ultimo messaggio inviato 
-                            </div>
-                        </div>
-                        <div class="time-container text-grey">
-                            12:00
-                        </div>
-                    </div>
-                    <div  class="card-user">
-                        <div class="img-container">
-                            <img src="img/avatar_3.jpg" alt="Michele">
-                        </div>
-                        <div class="name-container">
-                            <div class="mx-2 fw-bold">
-                               Samuele
-                            </div>
-                            <div class="text-grey">
-                                Ultimo messaggio inviato 
-                            </div>
-                        </div>
-                        <div class="time-container text-grey">
-                            12:00
-                        </div>
-                    </div>
-                    <div  class="card-user">
-                        <div class="img-container">
-                            <img src="img/avatar_3.jpg" alt="Michele">
-                        </div>
-                        <div class="name-container">
-                            <div class="mx-2 fw-bold">
-                               Samuele
-                            </div>
-                            <div class="text-grey">
-                                Ultimo messaggio inviato 
-                            </div>
-                        </div>
-                        <div class="time-container text-grey">
-                            12:00
-                        </div>
-                    </div>
-                    <div  class="card-user">
-                        <div class="img-container">
-                            <img src="img/avatar_3.jpg" alt="Michele">
-                        </div>
-                        <div class="name-container">
-                            <div class="mx-2 fw-bold">
-                               Samuele
+                            <div>
+                                {{ contact.name  }}
                             </div>
                             <div class="text-grey">
                                 Ultimo messaggio inviato 
