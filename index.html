@@ -58,15 +58,20 @@
                     </div>
                 </div>
                 <!-- contact-list -->
+                 <!-- oppure operatore ternario per aggiungere una classe v-bind:class="index  == indexCurrentActive ? 'active-chat' : ''" sotto usiamo quella ad oggetto -->
                 <div class="contact-list">
-                    <div  v-for="(contact, index) in contacts"
-                    class="card-user active-chat">
+                    <div  @click="changeActiveChat(index)"
+                    v-for="(contact, index) in contacts"    class="card-user"
+                    v-bind:class="{
+                        'active-chat' : index == activeContactIndex
+                    }" >
                         <div class="img-container">
-                            <img :src="contact.avatar" alt="Michele">
+                            <img v-bind:src="contact.avatar" v-bind:alt="contact.name">
                         </div>
                         <div class="name-container">
                             <div>
-                                {{ contact.name  }}
+                                {{ contact.name }}
+                                <!-- text interpolation  attraverso le mustache ovvero doppia parentesi graffe-->
                             </div>
                             <div class="text-grey">
                                 Ultimo messaggio inviato 
@@ -81,7 +86,8 @@
             </aside>
 
             <section class="right">
-                <!-- user chat active-->
+
+                <!-- user chat active PARTE SUPERIORE (INTESTAZIONE) -->
                 <div class="chat-profile ">
                     <div class="card-user active-chat ">
                         <div class="img-container">
@@ -107,31 +113,24 @@
                             <i class="fa-solid fa-ellipsis-vertical"></i>
                           </button>
                         </div>
-                   
                     </div>
+                </div>
 
-                </div>
-                <!-- chat active -->
+                <!-- chat active PARTE CENTRALE (MESSAGGI) -->
                 <div class="chat">
-                    <div class="flex-end">
-                        <button class="sent">
-                            <div class="flex-start">Hai portato a spasso il cane?</div>
-                            <div class="flex-end font-small">15:30</div>
-                        </button>
-                    </div>
-                    <div class="flex-end">
-                        <button class="sent">
-                            <div class="flex-start">Hai portato a spasso il cane?</div>
-                            <div class="flex-end font-small">15:30</div>
-                        </button>
-                    </div>
-                    <div >
-                        <button class="received">
-                            <div class="flex-start">Hai portato a spasso il cane?</div>
-                            <div class="flex-end font-small">15:30</div>
-                        </button>
-                    </div>
+                    <div v-for="(msg, index) in contacts[activeContactIndex].messages" class="single-message" 
+                    v-bind:class="{
+                        'sent':  msg.status == 'sent',  
+                        'received':  msg.status == 'received'
+                    }">
+                        <div>
+                            <div class="flex-start">{{msg.message}}</div>
+                            <div class="flex-end font-small">{{msg.date}}</div>
+                        </div>
+                    </div>               
                 </div>
+
+                <!-- writing message PARTE INFERIORE -->
                 <div class="writing-message">
                     
                     <button>

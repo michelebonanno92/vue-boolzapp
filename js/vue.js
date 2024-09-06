@@ -166,11 +166,17 @@ createApp({
                 ],
             }
         ],
-        indexCurrent:0,
+        activeContactIndex:0,
         
         }
     },
     methods: {
+       
+        changeActiveChat(newIndex){
+            this.activeContactIndex = newIndex
+            console.log(newIndex)
+         },
+
 
     },
     // mounted() {

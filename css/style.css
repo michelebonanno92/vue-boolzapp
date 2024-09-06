@@ -169,22 +169,20 @@ button{
     flex-grow: 1 ;
     background-image:url('../img/mine.jpg');
     overflow-y: auto;
-    width: 100wh;
     padding: 50px;
 }
-.chat div button{
-    padding: 10px 20px;
-    border-radius: 10px;
-    margin: 5px 50px;
-    width: 35%;
-    font-size: 0.8rem;
-}
-.sent{
+
+.single-message.sent{
     background-color: #D5F9BA;
+    justify-content: flex-end;
+    margin-right: 0;
 }
 
-.received{
+.single-message.received{
     background-color: #FFFFFF;
+    justify-content: flex-start;
+    margin-left: 0;
+
 }
 
 .card-user{
@@ -192,6 +190,17 @@ button{
     align-items: center;
     height: 10vh;
     background-color:#FFFFFF;
+}
+
+.single-message{
+    margin: 20px auto;
+    padding: 10px;
+    border-radius: 10px;
+    width: 35%;
+}
+
+.single-message div >*{
+    margin-bottom: 5px;
 }
 
 .flex-end{
