@@ -130,6 +130,7 @@ button{
 .contact-list{
     height: 67vh;
     overflow-y: auto;
+    cursor: pointer;
 }
 
 .text-grey{
@@ -139,7 +140,7 @@ button{
 
 .writing-message { 
     background-color:#F3EEEA ;
-    height: 10vh;
+    height: 80px;
     display: flex;
     width: 100%;
     align-items: center;
@@ -155,7 +156,7 @@ button{
 .writing-message input {
    display: flex;
    flex-grow: 1;
-   height: 70%;
+   height: 50px;
    border-radius: 10px;
    border: none;
    text-align: left;

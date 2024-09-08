@@ -167,17 +167,56 @@ createApp({
             }
         ],
         activeContactIndex:0,
+        userMessage:'',
         
         }
     },
     methods: {
-       
         changeActiveChat(newIndex){
             this.activeContactIndex = newIndex
             console.log(newIndex)
          },
 
+         getFullDate(){
+          const now = new Date();
 
+         let fullDate = '';
+         fullDate += now.getDate().toString().padStart(2,'0');
+         fullDate += '/';
+         fullDate += (now.getMonth() + 1).toString().padStart(2,'0');
+         fullDate += '/';
+         fullDate += now.getFullYear();
+         fullDate += ' ';
+         fullDate += now.getHours().toString().padStart(2,'0');
+         fullDate += ':';
+         fullDate += now.getMinutes().toString().padStart(2,'0');
+         fullDate += ':';
+         fullDate += now.getSeconds().toString().padStart(2,'0');
+
+         return fullDate ;
+
+         }, 
+
+        sendMessage(){
+           if (this.userMessage.trim().length >  0){
+            this.contacts[this.activeContactIndex].messages.push({
+                date: this.getFullDate(),
+                message: this.userMessage,
+                status: 'sent'
+        });
+            this.userMessage = '' ; 
+            setTimeout(()  => {
+                this.contacts[this.activeContactIndex].messages.push({
+                    date: this.getFullDate(),
+                    message: 'Ok!!!',
+                    status: 'received'
+            })  
+            }, 1000)
+        }
+        },
+
+   
+            
     },
     // mounted() {
     //   axios
@@ -186,5 +225,23 @@ createApp({
     //       console.log(this.response.data) 
     //     })
     // }
-  }
-).mount('#app');
+  
+}).mount('#app');
+
+
+/*
+MIlestone 3
+Aggiunta di un messaggio: l’utente scrive un testo nella parte bassa e digitando “enter” il testo viene aggiunto al thread sopra, come messaggio verde
+
+Risposta dall’interlocutore: ad ogni inserimento di un messaggio, l’utente riceverà un “ok” come risposta, che apparirà dopo 1 secondo.
+
+Milestone 4 
+
+Ricerca utenti: scrivendo qualcosa nell’input a sinistra, vengono visualizzati solo i contatti il cui nome contiene le lettere inserite (es, Marco, Matteo Martina -> Scrivo “mar” rimangono solo Marco e Martina)
+
+MIlestone 5 
+
+Cancella messaggio: cliccando sul messaggio appare un menu a tendina che permette di cancellare il messaggio selezionato
+
+Visualizzazione ora e ultimo messaggio inviato/ricevuto nella lista dei contatti 
+*/ 

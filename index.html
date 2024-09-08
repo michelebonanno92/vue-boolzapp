@@ -60,7 +60,7 @@
                 <!-- contact-list -->
                  <!-- oppure operatore ternario per aggiungere una classe v-bind:class="index  == indexCurrentActive ? 'active-chat' : ''" sotto usiamo quella ad oggetto -->
                 <div class="contact-list">
-                    <div  @click="changeActiveChat(index)"
+                    <div  v-on:click.enter="changeActiveChat(index)"
                     v-for="(contact, index) in contacts"    class="card-user"
                     v-bind:class="{
                         'active-chat' : index == activeContactIndex
@@ -91,11 +91,11 @@
                 <div class="chat-profile ">
                     <div class="card-user active-chat ">
                         <div class="img-container">
-                            <img src="img/avatar_1.jpg" alt="Michele">
+                            <img :src="contacts[activeContactIndex].avatar" :alt="contacts[activeContactIndex].name">
                         </div>
                         <div class="name-container">
                             <div class="mx-2 fw-bold">
-                                Michele
+                              {{contacts[activeContactIndex].name}}
                             </div>
                             <div class="text-grey">
                                 Ultimo accesso oggi alle 16:15
@@ -127,7 +127,7 @@
                             <div class="flex-start">{{msg.message}}</div>
                             <div class="flex-end font-small">{{msg.date}}</div>
                         </div>
-                    </div>               
+                    </div>     
                 </div>
 
                 <!-- writing message PARTE INFERIORE -->
@@ -137,8 +137,11 @@
                         <i class="fa-regular fa-face-smile"></i>
                     </button>
                     
-                    <input type="text" placeholder="scrivi un messaggio">
-                    
+                    <input  @keyup.enter="sendMessage()"
+                    v-model="userMessage"
+                    type="text" 
+                    placeholder="scrivi un messaggio">
+                   
                     <button>
                         <i class="fa-solid fa-microphone"></i>
                     </button>
