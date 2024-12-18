@@ -168,14 +168,50 @@ createApp({
         ],
         activeContactIndex:0,
         userMessage:'',
+        searchQuery: '' // Nuova proprietà per la query di ricerca
         
         }
     },
+    computed: {
+        // Computed property per filtrare i contatti in base alla ricerca
+        // filteredContacts() {
+        //     if (this.searchQuery.trim() === '') {
+        //         return this.contacts; // Se la query è vuota, mostra tutti i contatti
+        //     }
+        //     const lowerCaseQuery = this.searchQuery.toLowerCase();
+        //     return this.contacts.filter(contact => 
+        //         contact.name.toLowerCase().includes(lowerCaseQuery) // Confronto case-insensitive
+        //     );
+        // }
+
+        filteredContacts() {
+            // Se non c'è nessuna ricerca, ritorniamo tutti i contatti
+            if (!this.searchQuery) {
+              return this.contacts;
+            }
+        
+            // Filtriamo i contatti cercando le lettere della ricerca (ignorando maiuscole/minuscole)
+            return this.contacts.filter(contact => 
+              contact.name.toLowerCase().includes(this.searchQuery.toLowerCase())
+            );
+          }
+    },
     methods: {
-        changeActiveChat(newIndex){
-            this.activeContactIndex = newIndex
-            console.log(newIndex)
-         },
+        // changeActiveChat(newIndex){
+        //     this.activeContactIndex = newIndex
+        //     console.log(newIndex)
+        //  },
+        changeActiveChat(contactName) {
+            // Troviamo l'indice reale del contatto nel nostro array completo
+            const realIndex = this.contacts.findIndex(contact => contact.name === contactName);
+            this.activeContactIndex = realIndex;
+
+              // 🔥 Svuotiamo la barra di ricerca
+            this.searchQuery = '';
+
+            console.log('Contatto selezionato:', contactName, 'Indice reale:', realIndex);
+           
+          },
 
          getFullDate(){
           const now = new Date();
@@ -205,7 +241,8 @@ createApp({
                 status: 'sent'
         });
             this.userMessage = '' ; 
-            setTimeout(()  => {
+
+            setTimeout(() => {
                 this.contacts[this.activeContactIndex].messages.push({
                     date: this.getFullDate(),
                     message: 'Ok!!!',
@@ -214,7 +251,18 @@ createApp({
             }, 1000)
         }
         },
+/*
 
+     const self = this ;
+            setTimeout(function() {
+                self.contacts[self.activeContactIndex].messages.push({
+                    date: self.getFullDate(),
+                    message: 'Ok!!!',
+                    status: 'received'
+            })  
+            }, 1000)
+            o usiamo una funzione normale creando la variabile fuori che scostituisce il this o semplicemente usiamo una arrow function senza avere un problema di scope
+*/
    
             
     },
