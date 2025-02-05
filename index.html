@@ -99,7 +99,7 @@
                         </div>
                         <div class="time-container text-grey">12:00</div>
                     </div>
-
+    
                 </div>
 
             </aside>
@@ -136,7 +136,7 @@
                 </div>
 
                 <!-- chat active PARTE CENTRALE (MESSAGGI) -->
-                <div class="chat">
+                <!-- <div class="chat">
                     <div v-for="(msg, index) in contacts[activeContactIndex].messages" class="single-message" 
                     v-bind:class="{
                         'sent':  msg.status == 'sent',  
@@ -147,7 +147,26 @@
                             <div class="flex-end font-small">{{msg.date}}</div>
                         </div>
                     </div>     
+                </div> -->
+
+                <div class="chat">
+                    <div 
+                        v-for="(msg, index) in contacts[activeContactIndex].messages" 
+                        class="single-message" 
+                        :class="{ 'sent': msg.status == 'sent', 'received': msg.status == 'received' }"
+                    >
+                        <div @click="toggleMessageMenu(activeContactIndex)" class="message-content">
+                            <div class="flex-start">{{ msg.message }}</div>
+                            <div class="flex-end font-small">{{ msg.date }}</div>
+                        </div>
+                
+                        <!-- Menu a tendina -->
+                        <div v-if="messageMenuIndex === index" class="dropdown-menu">
+                            <button @click="deleteMessage(index)">Cancella messaggio</button>
+                        </div>
+                    </div>
                 </div>
+                
 
                 <!-- writing message PARTE INFERIORE -->
                 <div class="writing-message">

@@ -168,7 +168,8 @@ createApp({
         ],
         activeContactIndex:0,
         userMessage:'',
-        searchQuery: '' // Nuova proprietà per la query di ricerca
+        searchQuery: '', // Nuova proprietà per la query di ricerca,
+        messageMenuIndex: null // Indice del messaggio che mostra il menu a tendina
         
         }
     },
@@ -185,6 +186,7 @@ createApp({
         // }
 
         filteredContacts() {
+            console.log(' Ricalcolando filteredContacts');
             // Se non c'è nessuna ricerca, ritorniamo tutti i contatti
             if (!this.searchQuery) {
               return this.contacts;
@@ -197,6 +199,7 @@ createApp({
           }
     },
     methods: {
+
         // changeActiveChat(newIndex){
         //     this.activeContactIndex = newIndex
         //     console.log(newIndex)
@@ -206,7 +209,7 @@ createApp({
             const realIndex = this.contacts.findIndex(contact => contact.name === contactName);
             this.activeContactIndex = realIndex;
 
-              // 🔥 Svuotiamo la barra di ricerca
+              //  Svuotiamo la barra di ricerca
             this.searchQuery = '';
 
             console.log('Contatto selezionato:', contactName, 'Indice reale:', realIndex);
@@ -266,13 +269,10 @@ createApp({
    
             
     },
-    // mounted() {
-    //   axios
-    //     .get('https://url.url')
-    //     .then((response) => {
-    //       console.log(this.response.data) 
-    //     })
-    // }
+    
+
+
+
   
 }).mount('#app');
 
